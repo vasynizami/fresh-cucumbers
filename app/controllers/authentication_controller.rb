@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-  before_action :authorize_request, except: :login
+  before_action :authorize_request, only: [:verify]
 
   # POST /auth/login
   def login
@@ -19,7 +19,7 @@ class AuthenticationController < ApplicationController
 
 
   private
-
+  # strong params
   def login_params
     params.require(:auth).permit(:username, :password, :email)
   end
