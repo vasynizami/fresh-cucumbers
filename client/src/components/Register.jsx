@@ -20,7 +20,7 @@ export default class Register extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleRegister(this.state);
-        //this will redirect user to homepage after registering
+        //this will redirect user to homepage after registering; we are able to do this cos we added inherent route {..props} in the parent component for Register
         this.props.history.push('/');
       }}>
         <h3>Sign Up</h3>
