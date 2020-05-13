@@ -13,10 +13,4 @@ class MoviesController < ApplicationController
     render json: @movie
   end
 
-  # private
-
-  # def movie_params
-  #   params.require(:movie).permit(user_ids: [])
-  # end
-
 end

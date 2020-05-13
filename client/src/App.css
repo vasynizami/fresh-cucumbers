@@ -7,3 +7,20 @@ header {
   justify-content: space-around;
   align-items: center;
 }
+
+movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+movies div {
+  margin: 20px;
+}
+
+movies img {
+  max-height: 200px;
+  max-width: auto;
+}
+

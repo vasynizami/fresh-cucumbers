@@ -4,29 +4,39 @@ import LogIn from './LogIn';
 import Register from './Register';
 import MovieList from './MovieList';
 import MovieDetails from './MovieDetails';
-import ReviewList from './ReviewList';
+import { getAllMovies } from '../services/api-helper';
 
 export default class Main extends Component {
 
   state = {
-    movies: [],
-    reviews: []
+    movies: []
   }
   
   componentDidMount() {
     this.readAllMovies();
-    this.readAllReviews();
   }
   
   readAllMovies = async () => {
     const movies = await getAllMovies();
-    this.setState({ movies })
+    this.setState({ movies });
   }
+  
 
-  readAllReviews = async () => {
-    const reviews = await getAllReviews();
-    this.setState({ reviews })
-  }
+  // handleReviewSubmit = async (reviewData) => {
+  //   const newReview = await postReview(reviewData);
+  //   this.setState(prevState => ({
+  //     reviews: [...prevState.reviews, newReview]
+  //   }));
+  // }
+  
+  // handleReviewDelete = async (id) => {
+  //   await destroyReview(id);
+  //   this.setState(prevState => ({
+  //     reviews: prevState.reviews.filter(review => {
+  //       return review.id !== id
+  //     })
+  //   }))
+  // }
 
   render() {
     return (
@@ -41,17 +51,15 @@ export default class Main extends Component {
             {...props}
             handleRegister={this.props.handleRegister} />
         )} />
-        <Route path="/" render={(props) => (
+        <Route exact path="/" render={() => (
           <MovieList
-             />
+           movies={this.state.movies}/>
         )} />
-        <Route path="/:id" render={(props) => (
+        <Route exact path="/movies/:id" render={(props) => (
           <MovieDetails
-             />
-        )} />
-        <Route path="/:id" render={(props) => (
-          <ReviewList
-             />
+            {...props}
+              movieId={props.match.params.id}
+          />
         )} />
       </main>
     )
