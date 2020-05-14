@@ -50,6 +50,7 @@ class App extends Component {
           handleLogout={this.handleLogout}
         />
         <Main
+          currentUser={this.state.currentUser}
           handleLogin={this.handleLogin}
           handleRegister={this.handleRegister}
         />

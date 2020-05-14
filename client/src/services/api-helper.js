@@ -58,27 +58,27 @@ export const getOneMovie = async (id) => {
 //================= reviews ====================
 //============================================
 
-export const getAllReviews = async () => {
-  const resp = await api.get('/reviews');
+export const getAllReviews = async (movie_id) => {
+  const resp = await api.get(`/movies/${movie_id}/reviews`);
   return resp.data;
 }
 
 export const getOneReview = async (id) => {
-  const resp = await api.get(`/reviews/${id}`);
+  const resp = await api.get(`/movies/anything/reviews/${id}`);
   return resp.data;
 }
 
-export const postReview = async (reviewData) => {
-  const resp = await api.post('/reviews', reviewData);
+export const postReview = async (movie_id, reviewData) => {
+  const resp = await api.post(`/movies/${movie_id}/reviews`, reviewData);
   return resp.data;
 }
 
 export const editReview = async (id, reviewData) => {
-  const resp = await api.put(`/reviews/${id}`, reviewData);
+  const resp = await api.put(`/movies/anything/reviews/${id}`, reviewData);
   return resp.data;
 }
 
 export const destroyReview = async (id) => {
-  const resp = await api.delete(`/reviews/${id}`);
+  const resp = await api.delete(`/movies/anything/reviews/${id}`);
   return resp;
 }
