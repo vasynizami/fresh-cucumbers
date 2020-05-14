@@ -4,12 +4,15 @@ import LogIn from './LogIn';
 import Register from './Register';
 import MovieList from './MovieList';
 import MovieDetails from './MovieDetails';
-import { getAllMovies } from '../services/api-helper';
+import ReviewList from './ReviewList';
+import NewReview from './NewReview';
+import { getAllMovies, getAllReviews, postReview, destroyReview } from '../services/api-helper';
 
 export default class Main extends Component {
 
   state = {
-    movies: []
+    movies: [],
+    reviews: []
   }
   
   componentDidMount() {
@@ -21,22 +24,26 @@ export default class Main extends Component {
     this.setState({ movies });
   }
   
+  readAllReviews = async () => {
+    const reviews = await getAllReviews();
+    this.setState({ reviews });
+  }
 
-  // handleReviewSubmit = async (reviewData) => {
-  //   const newReview = await postReview(reviewData);
-  //   this.setState(prevState => ({
-  //     reviews: [...prevState.reviews, newReview]
-  //   }));
-  // }
+  handleReviewSubmit = async (reviewData) => {
+    const newReview = await postReview(reviewData);
+    this.setState(prevState => ({
+      reviews: [...prevState.reviews, newReview]
+    }));
+  }
   
-  // handleReviewDelete = async (id) => {
-  //   await destroyReview(id);
-  //   this.setState(prevState => ({
-  //     reviews: prevState.reviews.filter(review => {
-  //       return review.id !== id
-  //     })
-  //   }))
-  // }
+  handleReviewDelete = async (id) => {
+    await destroyReview(id);
+    this.setState(prevState => ({
+      reviews: prevState.reviews.filter(review => {
+        return review.id !== id
+      })
+    }))
+  }
 
   render() {
     return (
@@ -55,12 +62,26 @@ export default class Main extends Component {
           <MovieList
            movies={this.state.movies}/>
         )} />
-        <Route exact path="/movies/:id" render={(props) => (
+        <Route path="/:id" render={(props) => (
           <MovieDetails
             {...props}
-              movieId={props.match.params.id}
+            movieId={props.match.params.id}
           />
         )} />
+        <Route path="/:id/reviews" render={(props) => (
+            <ReviewList
+              {...props}
+              handleReviewDelete={this.handleReviewDelete}
+              reviews={this.state.reviews}
+            />
+        )} />
+        <Route path="/:id/reviews/new" render={(props) => (
+            <NewReview
+              {...props}
+                handleReviewSubmit={this.handleReviewSubmit}
+                 movieId = {props.match.params.id}
+            />
+            )} />
       </main>
     )
   }

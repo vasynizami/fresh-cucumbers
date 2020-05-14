@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import ReviewList from './ReviewList';
-import NewReview from './NewReview';
-import { getOneMovie, getAllReviews, postReview, destroyReview  } from '../services/api-helper';
+// import ReviewList from './ReviewList';
+// import NewReview from './NewReview';
+import { getOneMovie } from '../services/api-helper';
 
 export default class MovieDetails extends Component {
   state = {
-    movie: null,
-    reviews: []
+    movie: null
   }
 
   componentDidMount() {
     this.setMovie();
-    this.readAllReviews();
+    // this.readAllReviews();
   }
 
   setMovie = async () => {
@@ -20,26 +19,26 @@ export default class MovieDetails extends Component {
     this.setState({ movie });
   }
 
-  readAllReviews = async () => {
-    const reviews = await getAllReviews();
-    this.setState({ reviews });
-  }
+  // readAllReviews = async () => {
+  //   const reviews = await getAllReviews();
+  //   this.setState({ reviews });
+  // }
   
-  handleReviewSubmit = async (reviewData) => {
-    const newReview = await postReview(reviewData);
-    this.setState(prevState => ({
-      reviews: [...prevState.reviews, newReview]
-    }));
-  }
+  // handleReviewSubmit = async (reviewData) => {
+  //   const newReview = await postReview(reviewData);
+  //   this.setState(prevState => ({
+  //     reviews: [...prevState.reviews, newReview]
+  //   }));
+  // }
 
-  handleReviewDelete = async (id) => {
-    await destroyReview(id);
-    this.setState(prevState => ({
-      reviews: prevState.reviews.filter(review => {
-        return review.id !== id
-      })
-    }))
-  }
+  // handleReviewDelete = async (id) => {
+  //   await destroyReview(id);
+  //   this.setState(prevState => ({
+  //     reviews: prevState.reviews.filter(review => {
+  //       return review.id !== id
+  //     })
+  //   }))
+  // }
   
   render() {
     const { movie } = this.state;
@@ -58,21 +57,18 @@ export default class MovieDetails extends Component {
           <p>{movie.release_year}</p>
           <p>{movie.country}</p>
           <p>{movie.runtime}</p>
-          <Link to="/:id/reviews/new">
+          <Link to={`/${movie.id}/reviews/new`}>
             write a review
           </Link>
-        </div>
-          {/* <ReviewList
-            // {...props}
-            handleReviewDelete={this.handleReviewDelete}
-            reviews={this.state.reviews}
-          /> */}
-          <Route exact path="/:id/reviews/new" render={(props) => (
+            </div>
+            
+          {/* <Route exact path="/:id/reviews/new" render={(props) => (
             <NewReview
               {...props}
-              handleReviewSubmit={this.handleReviewSubmit}
+                handleReviewSubmit={this.handleReviewSubmit}
+                 movieId = {props.match.params.id}
             />
-            )} />
+            )} /> */}
             </>
   }
       </>
