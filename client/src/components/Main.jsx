@@ -9,11 +9,13 @@ import { getAllMovies } from '../services/api-helper';
 export default class Main extends Component {
 
   state = {
-    movies: []
+    movies: [],
+    // reviews: []
   }
   
   componentDidMount() {
     this.readAllMovies();
+    // this.readAllReviews();
   }
   
   readAllMovies = async () => {
@@ -24,12 +26,12 @@ export default class Main extends Component {
   render() {
     return (
       <main>
-        <Route path="/login" render={(props) => (
+        <Route exact path="/login" render={(props) => (
           <LogIn
             {...props}
             handleLogin={this.props.handleLogin} />
         )} />
-        <Route path="/register" render={(props) => (
+        <Route exact path="/register" render={(props) => (
           <Register
             {...props}
             handleRegister={this.props.handleRegister} />
@@ -38,12 +40,15 @@ export default class Main extends Component {
           <MovieList
            movies={this.state.movies}/>
         )} />
-        <Route exact path="/movies/:id" render={(props) => (
+        <Route path="/:id" render={(props) => (
           <MovieDetails
+          currentUser={this.props.currentUser}
             {...props}
-              movieId={props.match.params.id}
+            movieId={props.match.params.id}
           />
         )} />
+        
+        
       </main>
     )
   }
