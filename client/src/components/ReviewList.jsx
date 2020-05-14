@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function ReviewList(props) {
   return (
@@ -9,12 +9,14 @@ function ReviewList(props) {
             <p>{review.rating}</p>
           <p>{review.content}</p>
           {
-            props.currentUser
-            &&
+            props.currentUser && review.user_id === props.currentUser.id
+            ?
             <>
-            <button onClick={props.handleReviewEdit}>Edit</button>
-            <button onClick={props.handleReviewDelete}>Delete</button>
+            <button onClick={() => { props.handleReviewEdit(review.id)}}>Edit</button>
+            <button onClick={() => { props.handleReviewDelete(review.id)}}>Delete</button>
             </>
+            :
+            <></>
           }
           </React.Fragment>
         ))}

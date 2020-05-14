@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import ReviewList from "./ReviewList";
+import ReviewEdit from "./ReviewEdit";
 import NewReview from './NewReview';
 import { getOneMovie, getAllReviews, postReview, editReview, destroyReview } from "../services/api-helper";
 
@@ -77,7 +78,7 @@ export default class MovieDetails extends Component {
           )
         }
         <Route
-          exact path="/:id"
+         path="/:id/reviews"
           render={(props) => (
             <ReviewList
               {...props}
@@ -88,10 +89,18 @@ export default class MovieDetails extends Component {
             />
           )}
         />
+        <Route path='/:id/reviews/:review_id/edit' render={(props) => {
+          const id  = props.match.params.review_id
+          return <ReviewEdit
+            {...props}
+            handleReviewEdit={this.handleReviewEdit}
+            reviewId={id}
+          />
+        }} />
         {
           this.props.currentUser
           &&
-          <Route exact path="/:id/new" render={(props) => (
+          <Route exact path="/:id/reviews/new" render={(props) => (
             <NewReview
               {...props}
               handleReviewSubmit={this.handleReviewSubmit}

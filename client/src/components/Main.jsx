@@ -9,13 +9,11 @@ import { getAllMovies } from '../services/api-helper';
 export default class Main extends Component {
 
   state = {
-    movies: [],
-    // reviews: []
+    movies: []
   }
   
   componentDidMount() {
     this.readAllMovies();
-    // this.readAllReviews();
   }
   
   readAllMovies = async () => {
@@ -40,7 +38,7 @@ export default class Main extends Component {
           <MovieList
            movies={this.state.movies}/>
         )} />
-        <Route path="/:id" render={(props) => (
+        <Route exact path="/:id" render={(props) => (
           <MovieDetails
           currentUser={this.props.currentUser}
             {...props}
