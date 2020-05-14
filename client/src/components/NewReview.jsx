@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class NewReview extends Component {
   state = {
-    rating: null,
+    rating: "",
     content: ""
   }
   handleChange = (e) => {

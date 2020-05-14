@@ -20,23 +20,6 @@ export default class Main extends Component {
     const movies = await getAllMovies();
     this.setState({ movies });
   }
-  
-
-  // handleReviewSubmit = async (reviewData) => {
-  //   const newReview = await postReview(reviewData);
-  //   this.setState(prevState => ({
-  //     reviews: [...prevState.reviews, newReview]
-  //   }));
-  // }
-  
-  // handleReviewDelete = async (id) => {
-  //   await destroyReview(id);
-  //   this.setState(prevState => ({
-  //     reviews: prevState.reviews.filter(review => {
-  //       return review.id !== id
-  //     })
-  //   }))
-  // }
 
   render() {
     return (
