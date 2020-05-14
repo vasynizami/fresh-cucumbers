@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class NewReview extends Component {
   state = {
     movie_id: this.props.movieId,
-    rating: null,
+    rating: "",
     content: ""
   }
   handleChange = (e) => {
@@ -19,7 +19,7 @@ export default class NewReview extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleReviewSubmit(this.state);
-        // this.props.history.push("/");
+        this.props.history.push("/:id");
       }}>
         <h3>Write A Review</h3>
         <input

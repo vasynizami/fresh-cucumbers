@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import ReviewList from "./ReviewList";
 import NewReview from './NewReview';
-import { getOneMovie, getAllReviews, postReview, destroyReview } from "../services/api-helper";
+import { getOneMovie, getAllReviews, postReview, editReview, destroyReview } from "../services/api-helper";
 
 export default class MovieDetails extends Component {
   state = {
     movie: null,
-    reviews: [],
-  };
+    reviews: []
+  }
 
   componentDidMount() {
     this.setMovie();
@@ -18,17 +18,26 @@ export default class MovieDetails extends Component {
   setMovie = async () => {
     const movie = await getOneMovie(this.props.movieId);
     this.setState({ movie });
-  };
+  }
 
   readAllReviews = async () => {
     const reviews = await getAllReviews(this.props.movieId);
     this.setState({ reviews });
-  };
+  }
 
   handleReviewSubmit = async (reviewData) => {
     const newReview = await postReview(this.props.movieId, reviewData);
     this.setState(prevState => ({
       reviews: [...prevState.reviews, newReview]
+    }));
+  }
+
+  handleReviewEdit = async (id, reviewData) => {
+    const updatedReview = await editReview(id, reviewData);
+    this.setState(prevState => ({
+      reviews: prevState.reviews.map(review => {
+        return review.id === id ? updatedReview : review
+      })
     }));
   }
 
@@ -38,7 +47,7 @@ export default class MovieDetails extends Component {
       reviews: prevState.reviews.filter(review => {
         return review.id !== id
       })
-    }))
+    }));
   }
 
   render() {
@@ -58,16 +67,22 @@ export default class MovieDetails extends Component {
                 <p>{movie.release_year}</p>
                 <p>{movie.country}</p>
                 <p>{movie.runtime}</p>
-                <Link to={`/${movie.id}/new`}>write a review</Link>
+                {
+                  this.props.currentUser
+                  &&
+                  <Link to={`/${movie.id}/new`}>write a review</Link>
+                }
               </div>
             </>
           )
         }
         <Route
-          path="/:id"
+          exact path="/:id"
           render={(props) => (
             <ReviewList
               {...props}
+              currentUser={this.props.currentUser}
+              handleReviewEdit={this.handleReviewEdit}
               handleReviewDelete={this.handleReviewDelete}
               reviews={this.state.reviews}
             />
@@ -76,7 +91,7 @@ export default class MovieDetails extends Component {
         {
           this.props.currentUser
           &&
-          <Route path="/:id/new" render={(props) => (
+          <Route exact path="/:id/new" render={(props) => (
             <NewReview
               {...props}
               handleReviewSubmit={this.handleReviewSubmit}
