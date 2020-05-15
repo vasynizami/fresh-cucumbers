@@ -1,18 +1,18 @@
-/* .App {
+.App {
   text-align: center;
-} */
-
+}
+a {
+  text-decoration: none;
+  color: black;
+}
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: bisque;
 }
-.movieContent {
-  display: flex;
-  justify-content: center;
-}
-.movieDetails {
-  max-width: 50vw;
+main{
+  margin-top: 30px;
 }
 movies {
   display: flex;
@@ -20,13 +20,19 @@ movies {
   justify-content: center;
   align-items: center;
 }
-
 movies div {
   margin: 20px;
 }
-
 movies img {
   max-height: 200px;
   max-width: auto;
+}
+.movieContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movieDetails {
+  max-width: 50vw;
 }
 
