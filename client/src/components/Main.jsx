@@ -43,7 +43,7 @@ export default class Main extends Component {
           <MovieList
            movies={this.state.movies}/>
         )} />
-        <Route exact path="/movies/:id" render={(props) => (
+        <Route path="/movies/:id" render={(props) => (
           <MovieDetails
           currentUser={this.props.currentUser}
             {...props}

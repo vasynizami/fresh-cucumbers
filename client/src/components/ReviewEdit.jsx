@@ -31,7 +31,7 @@ export default class ReviewEdit extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleReviewEdit(this.props.reviewId, this.state);
-        this.props.history.push(`/movies/${this.props.movieId}/reviews`);
+        this.props.history.push(`/movies/${this.props.movieId}/`);
       }}>
         <h3>Edit Review</h3>
         <input

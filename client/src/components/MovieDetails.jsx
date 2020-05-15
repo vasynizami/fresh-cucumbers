@@ -81,9 +81,8 @@ export default class MovieDetails extends Component {
                 movieId={movie.id}
               />
             </div>
-    )
+          )
         }
-      
         <Route path='/movies/:id/reviews/:review_id/edit' render={(props) => {
           const id = props.match.params.review_id
           const movieId = props.match.params.id
@@ -92,12 +91,12 @@ export default class MovieDetails extends Component {
             handleReviewEdit={this.handleReviewEdit}
             reviewId={id}
             movieId={movieId}
-          />
-        }} /> 
+            />
+          }} /> 
        {
           this.props.currentUser
           &&
-          <Route exact path="/movies/:id/reviews/new" render={(props) => (
+          <Route path="/movies/:id/reviews/new" render={(props) => (
             <NewReview
               {...props}
               handleReviewSubmit={this.handleReviewSubmit}
