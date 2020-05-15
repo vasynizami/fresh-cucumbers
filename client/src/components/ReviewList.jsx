@@ -10,6 +10,7 @@ function ReviewList(props) {
             <p>{review.rating}</p>
             <p>{review.content}</p>
           {
+            // user is logged in and the review belongs to this logged user
             props.currentUser && review.user_id === props.currentUser.id
             ?
             <>
