@@ -6,7 +6,7 @@ export default function MovieList (props) {
       <movies>
         {props.movies.map(movie => (
           <React.Fragment key={movie.id}>
-            <Link to={`/${movie.id}`}>
+            <Link to={`/movies/${movie.id}`}>
               <div>
                 <img src={movie.img} />
                 <p>{movie.name}</p>

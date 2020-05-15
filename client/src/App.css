@@ -1,13 +1,19 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
+.movieContent {
+  display: flex;
+  justify-content: center;
+}
+.movieDetails {
+  max-width: 50vw;
+}
 movies {
   display: flex;
   flex-wrap: wrap;

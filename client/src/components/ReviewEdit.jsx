@@ -19,19 +19,19 @@ export default class ReviewEdit extends Component {
   }
 
   setFormData = async () => {
-    const review = await getOneReview(this.props.reviewId);
+    const review = await getOneReview(this.props.movieId, this.props.reviewId);
     this.setState({
       rating: review.name,
       content: review.content
     })
   }
-
+  
   render() {
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleReviewEdit(this.props.reviewId, this.state);
-        this.props.history.push('/:id');
+        this.props.history.push(`/movies/${this.props.movieId}/reviews`);
       }}>
         <h3>Edit Review</h3>
         <input
