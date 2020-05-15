@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ReviewList(props) {
   return (
@@ -7,12 +8,12 @@ function ReviewList(props) {
       {props.reviews.map(review => (
         <React.Fragment key={review.id}>
             <p>{review.rating}</p>
-          <p>{review.content}</p>
+            <p>{review.content}</p>
           {
             props.currentUser && review.user_id === props.currentUser.id
             ?
             <>
-            <button onClick={() => { props.handleReviewEdit(review.id)}}>Edit</button>
+            <Link to={`/movies/${props.movieId}/reviews/${review.id}/edit`}>Edit</Link>
             <button onClick={() => { props.handleReviewDelete(review.id)}}>Delete</button>
             </>
             :

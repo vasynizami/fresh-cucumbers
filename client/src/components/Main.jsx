@@ -4,22 +4,27 @@ import LogIn from './LogIn';
 import Register from './Register';
 import MovieList from './MovieList';
 import MovieDetails from './MovieDetails';
+// import ReviewEdit from './ReviewEdit';
+// import NewReview from './NewReview';
 import { getAllMovies } from '../services/api-helper';
 
 export default class Main extends Component {
 
   state = {
-    movies: []
+    movies: [],
+    // reviews: []
   }
   
   componentDidMount() {
     this.readAllMovies();
+    // this.readAllReviews();
   }
   
   readAllMovies = async () => {
     const movies = await getAllMovies();
     this.setState({ movies });
   }
+
 
   render() {
     return (
@@ -38,15 +43,14 @@ export default class Main extends Component {
           <MovieList
            movies={this.state.movies}/>
         )} />
-        <Route exact path="/:id" render={(props) => (
+        <Route exact path="/movies/:id" render={(props) => (
           <MovieDetails
           currentUser={this.props.currentUser}
             {...props}
             movieId={props.match.params.id}
+            reviws={this.state.reviews}
           />
         )} />
-        
-        
       </main>
     )
   }

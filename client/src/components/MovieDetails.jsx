@@ -34,7 +34,7 @@ export default class MovieDetails extends Component {
   }
 
   handleReviewEdit = async (id, reviewData) => {
-    const updatedReview = await editReview(id, reviewData);
+    const updatedReview = await editReview(this.state.movie.id, id, reviewData);
     this.setState(prevState => ({
       reviews: prevState.reviews.map(review => {
         return review.id === id ? updatedReview : review
@@ -43,7 +43,7 @@ export default class MovieDetails extends Component {
   }
 
   handleReviewDelete = async (id) => {
-    await destroyReview(id);
+    await destroyReview(this.state.movie.id, id);
     this.setState(prevState => ({
       reviews: prevState.reviews.filter(review => {
         return review.id !== id
@@ -52,13 +52,13 @@ export default class MovieDetails extends Component {
   }
 
   render() {
-    const { movie } = this.state;
+    const { movie, reviews } = this.state;
     return (
       <>
         {
           // we need guard operator here cos render will try to happen before movie is set
           movie && (
-            <>
+            <div className="movieContent">
               <div className="movieDetails">
                 <img src={movie.img} />
                 <p>{movie.name}</p>
@@ -71,36 +71,33 @@ export default class MovieDetails extends Component {
                 {
                   this.props.currentUser
                   &&
-                  <Link to={`/${movie.id}/new`}>write a review</Link>
+                  <Link to={`/movies/${movie.id}/reviews/new`}>write a review</Link>
                 }
               </div>
-            </>
-          )
+              <ReviewList
+                currentUser={this.props.currentUser} 
+                handleReviewDelete={this.handleReviewDelete}
+                reviews={reviews}
+                movieId={movie.id}
+              />
+            </div>
+    )
         }
-        <Route
-         path="/:id/reviews"
-          render={(props) => (
-            <ReviewList
-              {...props}
-              currentUser={this.props.currentUser}
-              handleReviewEdit={this.handleReviewEdit}
-              handleReviewDelete={this.handleReviewDelete}
-              reviews={this.state.reviews}
-            />
-          )}
-        />
-        <Route path='/:id/reviews/:review_id/edit' render={(props) => {
-          const id  = props.match.params.review_id
+      
+        <Route path='/movies/:id/reviews/:review_id/edit' render={(props) => {
+          const id = props.match.params.review_id
+          const movieId = props.match.params.id
           return <ReviewEdit
             {...props}
             handleReviewEdit={this.handleReviewEdit}
             reviewId={id}
+            movieId={movieId}
           />
-        }} />
-        {
+        }} /> 
+       {
           this.props.currentUser
           &&
-          <Route exact path="/:id/reviews/new" render={(props) => (
+          <Route exact path="/movies/:id/reviews/new" render={(props) => (
             <NewReview
               {...props}
               handleReviewSubmit={this.handleReviewSubmit}
