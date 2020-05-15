@@ -19,7 +19,7 @@ export default class NewReview extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleReviewSubmit(this.state);
-        this.props.history.push(`/movies/${this.props.movieId}`);
+        this.props.history.push(`/movies/${this.props.movieId}/moviepage`);
       }}>
         <h3>Write A Review</h3>
         <input
