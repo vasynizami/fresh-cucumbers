@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = process.env.NODE_ENV === 'production' ? 'https://fresh-cucumbers.herokuapp.com/' : 'http://localhost:3000' 
-
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://fresh-cucumbers.herokuapp.com/' : 'http://localhost:3000';
 
 const api = axios.create({
   baseURL: baseUrl
@@ -64,8 +63,8 @@ export const getAllReviews = async (movie_id) => {
   return resp.data;
 }
 
-export const getOneReview = async (id) => {
-  const resp = await api.get(`/movies/anything/reviews/${id}`);
+export const getOneReview = async (anything, id) => {
+  const resp = await api.get(`/movies/${anything}/reviews/${id}`);
   return resp.data;
 }
 
@@ -74,12 +73,12 @@ export const postReview = async (movie_id, reviewData) => {
   return resp.data;
 }
 
-export const editReview = async (id, reviewData) => {
-  const resp = await api.put(`/movies/anything/reviews/${id}`, reviewData);
+export const editReview = async (anything, id, reviewData) => {
+  const resp = await api.put(`/movies/${anything}/reviews/${id}`, reviewData);
   return resp.data;
 }
 
-export const destroyReview = async (id) => {
-  const resp = await api.delete(`/movies/anything/reviews/${id}`);
+export const destroyReview = async (anything, id) => {
+  const resp = await api.delete(`/movies/${anything}/reviews/${id}`);
   return resp;
 }
