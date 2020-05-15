@@ -56,7 +56,7 @@ export default class MovieDetails extends Component {
     return (
       <>
         {
-          // we need guard operator here cos render will try to happen before movie is set
+          // we need guard operator here cos render will try to happen before movie is setStated; the initial state runs first, then render, then lifecycles 
           movie && (
             <div className="movieContent">
               <div className="movieDetails">
