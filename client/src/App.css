@@ -55,6 +55,7 @@ header h1 {
 }
 
 /* MAIN STYLE */
+
 h2 {
   background-color: #37928A;
   color: lightgrey;
@@ -85,6 +86,10 @@ input, textarea {
 
 label {
   margin-right: 20px;
+}
+
+.email-label {
+  margin-right: 51px;
 }
 
 input:focus, button:focus, textarea:focus {
@@ -289,6 +294,10 @@ movies p {
 
   label {
     font-size: 12px;
+  }
+  
+  .email-label {
+    margin-right: 46px;
   }
 
   input, textarea {
