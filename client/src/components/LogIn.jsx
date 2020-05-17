@@ -26,7 +26,7 @@ export default class LogIn extends Component {
           this.props.history.push("/");
         }}
       >
-        <h3>Sign In</h3>
+        <h4>Sign In</h4>
         <div className="input-field">
           <label htmlFor="username">username:</label>
           <input

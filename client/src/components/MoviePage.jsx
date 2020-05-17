@@ -8,7 +8,7 @@ function MoviePage(props) {
     <div className="movieContent">
       <div className="movieDetails">
         <img src={movie.img} />
-        <h3>{movie.name}</h3>
+        <h2>{movie.name}</h2>
         <p>{movie.director}</p>
         <p>{movie.genre}</p>
         <p>{movie.synopsis}</p>
