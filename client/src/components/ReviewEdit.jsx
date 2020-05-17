@@ -28,24 +28,32 @@ export default class ReviewEdit extends Component {
   
   render() {
     return (
-      <form onSubmit={(e) => {
+      <form
+        
+        onSubmit={(e) => {
         e.preventDefault();
         this.props.handleReviewEdit(this.props.reviewId, this.state);
         this.props.history.push(`/movies/${this.props.movieId}/moviepage`);
       }}>
-        <h3>Edit Review</h3>
+        <h4>Edit Review</h4>
+        <div className="review-form">
         <input
+          required
           type="text"
           name="rating"
           value={this.state.rating}
           onChange={this.handleChange}
         />
-        <input
+        <textarea
+          required
+          rows={12}
+          cols={60}
           type="text"
           name="content"
           value={this.state.content}
           onChange={this.handleChange}
-        />
+          />
+          </div>
         <button>Submit</button>
 
       </form>

@@ -12,7 +12,7 @@ export default class Main extends Component {
 
   state = {
     movies: [],
-    // reviews: []
+    // avgrating: null
   }
   
   componentDidMount() {
