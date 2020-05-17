@@ -6,9 +6,8 @@ function ReviewList(props) {
     <div className="reviews">
       <h3>Reviews</h3>
       {props.reviews.map(review => (
-        <React.Fragment key={review.id}>
-            <p>{review.rating}</p>
-            <p>{review.content}</p>
+        <div key={review.id}>
+          <p>{review.content}</p>
           {
             // user is logged in and the review belongs to this logged user
             props.currentUser && review.user_id === props.currentUser.id
@@ -20,7 +19,7 @@ function ReviewList(props) {
             :
             <></>
           }
-          </React.Fragment>
+          </div>
         ))}
     </div>
   )
