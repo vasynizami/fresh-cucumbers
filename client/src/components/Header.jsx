@@ -12,11 +12,11 @@ function Header(props) {
           <p>Hi, {props.currentUser.username}!</p>
           <button id="signout" onClick={props.handleLogout}>Sign Out</button>
         </>
-        :
-        <div className="auth-link">
+          :
+        <>
           <Link to="/login">Sign In</Link>
           <Link to="/register">Sign Up</Link>
-        </div>
+        </>
       }
     </header>
   )
