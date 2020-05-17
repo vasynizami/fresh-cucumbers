@@ -35,6 +35,16 @@ export default class Register extends Component {
           />
         </div>
         <div className="input-field">
+        <label htmlFor="email">email:</label>
+        <input
+          id="email"
+          type="text"
+          name="email"
+          value={email}
+          onChange={this.handleChange}
+          />
+        </div>
+        <div className="input-field">
         <label htmlFor="password">password:</label>
         <input
           id="password"

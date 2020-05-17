@@ -4,6 +4,7 @@ import React, { Component } from "react";
 export default class LogIn extends Component {
   state = {
     username: "",
+    email: "",
     password: ""
   };
 
@@ -15,7 +16,7 @@ export default class LogIn extends Component {
   };
 
   render() {
-    const { username, password } = this.state;
+    const { username, email, password } = this.state;
     return (
       <form
         className="auth"
@@ -34,6 +35,16 @@ export default class LogIn extends Component {
             type="text"
             name="username"
             value={username}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className="input-field">
+          <label htmlFor="email">email:</label>
+          <input
+            id="email"
+            type="text"
+            name="email"
+            value={email}
             onChange={this.handleChange}
           />
         </div>
