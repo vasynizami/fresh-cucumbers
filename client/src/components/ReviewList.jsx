@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ReviewList(props) {
   return (
-    <div>
+    <div className="reviews">
       <h3>Reviews</h3>
       {props.reviews.map(review => (
         <React.Fragment key={review.id}>
@@ -14,7 +14,7 @@ function ReviewList(props) {
             props.currentUser && review.user_id === props.currentUser.id
             ?
             <>
-            <Link to={`/movies/${props.movieId}/reviews/${review.id}/edit`}>Edit</Link>
+            <Link to={`/movies/${props.movieId}/reviews/${review.id}/edit`} className="link-button">Edit</Link>
             <button onClick={() => { props.handleReviewDelete(review.id)}}>Delete</button>
             </>
             :

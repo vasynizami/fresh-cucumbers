@@ -1,13 +1,9 @@
 body {
   margin: 0;
-  font-family: 'Helvetica Neue', 'Monofett', sans-serif;
+  font-family: 'Open Sans', 'Monofett', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* 
-@font-face {
-  font-family: 'Caprica';
-  src: local('Caprica'), url(./fonts/CapricaSansPersonalUse-J4wx.ttf) format('truetype');
-} */
 
 @import url('https://fonts.googleapis.com/css2?family=Monofett&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');

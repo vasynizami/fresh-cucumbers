@@ -1,50 +1,135 @@
 .App {
   text-align: center;
+  color: #2D341E;
 }
+
+/* HEADER style */
 a {
   text-decoration: none;
+  font-weight: 700;
   color: #2D341E;
-  border: 2px groove #228B22;
-  border-radius: 10px;
-  padding: 2px 20px;
 }
+
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #ffff60;
 }
-/* header a {
 
-} */
+header a {
+  transition: transform 0.5s ease-out;
+  cursor: default;
+  font-size: 18px;
+}
+
+header a:hover {
+  transform: scale(1.1);
+}
+
 header h1 {
   color: 	#228B22;
   font-family: 'Monofett';
   letter-spacing: 4px;
   font-size: 48px;
 }
-main{
-  margin-top: 30px;
+
+#signout {
+  color: #2D341E;
+  border: none;
+  cursor: default;
+  background: none;
+  font-family: 'Open Sans';
+  font-size: 18px;
+  font-weight: 700;
+  transition: transform 0.5s ease-out;
 }
+
+#signout:hover {
+  transform: scale(1.1);
+}
+
+/* MAIN STYLE */
+h3 {
+  text-transform: uppercase;
+  background-color: #C7DFAF;
+}
+
+.input-field input {
+  font-size: 24px;
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+  padding: 2px;
+  font-size: 18px;
+  margin: 20px auto;
+  color: #2D341E !important;
+  background:white !important;
+  padding: 2px 10px;
+}
+
+.input-field label {
+  margin-right: 20px;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
+
+button {
+  font-size: 14px;
+  padding: 5px 20px;
+  border: none;
+  background-color: rgba(190, 211, 215, 0.598);
+  border-radius: 5px;
+  font-weight: 700;
+  color: black !important;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+}
+
+main{
+  margin-top: 80px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
 movies {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
+
 movies div {
   margin: 20px;
 }
+
 movies img {
   max-height: 200px;
   max-width: auto;
 }
+
 .movieContent {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-.movieDetails {
-  max-width: 50vw;
+  text-align: initial;
 }
 
+.movieDetails {
+  max-width: 50%;
+}
+
+.reviews {
+  margin-left: 40px;
+}
+
+.link-button {
+  margin-right: 15px;
+  font-size: 14px;
+  padding: 5px 20px;
+  /* font-weight: 700; */
+  background-color: rgba(190, 211, 215, 0.598);
+  border-radius: 5px;
+  color: black;
+  letter-spacing: 1px;
+}

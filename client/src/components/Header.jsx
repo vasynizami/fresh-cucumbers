@@ -10,7 +10,7 @@ function Header(props) {
         ?
         <>
           <p>Hi, {props.currentUser.username}!</p>
-          <button onClick={props.handleLogout}>Sign Out</button>
+          <button id="signout" onClick={props.handleLogout}>Sign Out</button>
         </>
         :
         <>
