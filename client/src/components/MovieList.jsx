@@ -10,7 +10,6 @@ export default function MovieList (props) {
               <div>
                 <img src={movie.img} />
                 <p>{movie.name}</p>
-                {/* <p>{movie.rating}</p> */}
               </div>
             </Link>
           </React.Fragment>

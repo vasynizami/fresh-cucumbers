@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
-// import ReviewList from "./ReviewList";
+import { Route } from "react-router-dom";
 import MoviePage from "./MoviePage";
 import ReviewEdit from "./ReviewEdit";
 import NewReview from "./NewReview";

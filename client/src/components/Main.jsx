@@ -4,20 +4,16 @@ import LogIn from './LogIn';
 import Register from './Register';
 import MovieList from './MovieList';
 import MovieDetails from './MovieDetails';
-// import ReviewEdit from './ReviewEdit';
-// import NewReview from './NewReview';
 import { getAllMovies } from '../services/api-helper';
 
 export default class Main extends Component {
 
   state = {
-    movies: [],
-    // avgrating: null
+    movies: []
   }
   
   componentDidMount() {
     this.readAllMovies();
-    // this.readAllReviews();
   }
   
   readAllMovies = async () => {
