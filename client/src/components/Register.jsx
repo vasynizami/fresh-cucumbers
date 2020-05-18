@@ -28,39 +28,44 @@ export default class Register extends Component {
       >
         <h4>Sign Up</h4>
         <div className="auth-form">
-        <div className="input-field">
-          <label htmlFor="username">username:</label>
-          <input
-            id="username"
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-        </div>
-
-        <div className="input-field">
-          <label className="email-label" htmlFor="email">email:</label>
-          <input
-            id="email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-        </div>
-
-        <div className="input-field">
-          <label htmlFor="password">password:</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
+          <div className="input-field">
+            <label htmlFor="username">username:</label>
+            <input
+              required
+              id="username"
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
           </div>
+
+          <div className="input-field">
+            <label className="email-label" htmlFor="email">
+              email:
+            </label>
+            <input
+              required
+              id="email"
+              type="text"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
           </div>
+
+          <div className="input-field">
+            <label htmlFor="password">password:</label>
+            <input
+              required
+              id="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </div>
+        </div>
         <button className="submit">Submit</button>
       </form>
     );

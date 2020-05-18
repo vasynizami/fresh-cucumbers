@@ -32,6 +32,7 @@ export default class LogIn extends Component {
         <div className="input-field">
           <label htmlFor="username">username:</label>
           <input
+            required
             id="username"
             type="text"
             name="username"
@@ -43,6 +44,7 @@ export default class LogIn extends Component {
         <div className="input-field">
           <label className="email-label" htmlFor="email">email:</label>
           <input
+            required
             id="email"
             type="text"
             name="email"
@@ -54,6 +56,7 @@ export default class LogIn extends Component {
         <div className="input-field">
         <label htmlFor="password">password:</label>
         <input
+          required
           id="password"
           type="password"
           name="password"
